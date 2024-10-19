@@ -1,7 +1,26 @@
-import React from 'react';
-
+import { useSDK } from "@metamask/sdk-react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Home: React.FC = () => {
+  const [account, setAccount] = useState<string>();
+  const { sdk, connected, connecting, provider, chainId } = useSDK();
+  const navigate = useNavigate()
+
+  const connect = async () => {
+    console.log('here')
+    try {
+      const accounts = await sdk?.connect();
+      setAccount(accounts?.[0]);
+      
+      console.log(accounts)
+      navigate('/dashboard')
+
+    } catch (err) {
+        
+      console.warn("failed to connect..", err);
+    }
+  };
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -17,8 +36,8 @@ const Home: React.FC = () => {
             <a href="#about" className="text-gray-600 hover:text-blue-500">
               About
             </a>
-            <a href="#wallet" className="text-gray-600 hover:text-blue-500">
-              Wallet
+            <a className="text-gray-600 hover:text-blue-500 hover:cursor-pointer" onClick={connect}>
+              Connect to Wallet
             </a>
           </nav>
         </div>
