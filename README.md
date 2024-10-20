@@ -4,15 +4,15 @@ This project allows users to generate Solidity code based on prompts provided th
 
 # Working
 - ## AI-Powered Code Generation
-        Generate Solidity smart contracts using Gemini AI prompts.
+  Generate Solidity smart contracts using Gemini AI prompts.
 - ## Compilation
-       Automatically compile generated Solidity code using the Solidity compiler (solc).
+  Automatically compile generated Solidity code using the Solidity compiler (solc).
 - ## Deployment:
-      Deploy compiled contracts to the Etherlink blockchain.
+  Deploy compiled contracts to the Etherlink blockchain.
 - ## MetaMask Integration
-      Seamlessly connect to user wallets for transaction management.
+  Seamlessly connect to user wallets for transaction management.
 - ## IPFS Pinata Storage
-      Store contract metadata and related files on IPFS for decentralized access.
+  Store contract metadata and related files on IPFS for decentralized access.
 
 # Key Features and Benefits
    - ## No Coding Required
