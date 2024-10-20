@@ -80,15 +80,15 @@ This README provides step-by-step instructions for setting up both the client an
    ```
 The server will start on port 8000, and you can access it at http://localhost:8000.
 
-## BlockChain 
-   # MetaMask Integration
-      Ensure you have MetaMask installed in your browser and connected to the Etherlink network. When deploying contracts, MetaMask will prompt you to confirm transactions.
+# BlockChain 
+   ## MetaMask Integration
+  Ensure you have MetaMask installed in your browser and connected to the Etherlink network. When deploying contracts, MetaMask will prompt you to confirm transactions.
       
 1. **Install Truffle Globally [For compilation of Solidity Code]**
    ```bash
      npm install -g truffle
    ```
-2. **Create a New Directory **
+2. **Create a New Directory**
    ```bash
      mkdir my-no-code-dapp
      cd my-no-code-dapp
