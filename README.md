@@ -16,13 +16,13 @@ This project allows users to generate Solidity code based on prompts provided th
 
 # Key Features and Benefits
    - ## No Coding Required
-              Users can generate smart contracts without needing programming skills, making blockchain technology accessible to a broader audience
+  Users can generate smart contracts without needing programming skills, making blockchain technology accessible to a broader audience
    - ## Rapid Contract Generation
-              AI-driven prompts facilitate quick generation of smart contracts
+   AI-driven prompts facilitate quick generation of smart contracts
    - ## Automated Processes
-           The DApp automates the compilation and deployment processes,       minimizing manual intervention and speeding up the entire workflow.
+     The DApp automates the compilation and deployment processes,       minimizing manual intervention and speeding up the entire workflow.
    - ## Lower Transaction Fees
-         Smart contracts can reduce or eliminate fees typically paid to intermediaries, making transactions more economical.
+     Smart contracts can reduce or eliminate fees typically paid to intermediaries, making transactions more economical.
    
 # Project Setup Guide
 
