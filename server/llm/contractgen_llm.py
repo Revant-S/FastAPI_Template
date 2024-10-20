@@ -66,7 +66,7 @@ async def generate_solidity(context, dropdown_dict, features):
 
 
     # Google Gemini AI configuration
-    api_key = "AIzaSyDVjmAd1NzZuf0w7-kC-bfO9Lxy-PZTcjg"
+    api_key = ""
     genai.configure(api_key=api_key)
 
     # Initialize the model
