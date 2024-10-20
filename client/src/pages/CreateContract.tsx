@@ -20,6 +20,15 @@ const CreateContract: React.FC = () => {
     setSelectedFeatures(selectedFeatures.filter((item) => item !== feature));
   };
 
+  const handleConfirm = () =>{
+  
+    
+    
+    if (selectedDomain!=null && selectedFeatures.length!=0) navigate('/contract-preview')
+    else alert("Please choose the details")
+    
+  }
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10">
       <h1 className="text-4xl font-bold mb-6">Create Your Smart Contract</h1>
@@ -116,9 +125,9 @@ const CreateContract: React.FC = () => {
       {/* Next Button */}
       <button
         className="px-6 py-3 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 transition-all duration-300"
-        onClick={() => navigate('/contract-preview')} // Replace with actual path
+        onClick={handleConfirm} // Replace with actual path
       >
-        Next
+        Confirm
       </button>
     </div>
   );

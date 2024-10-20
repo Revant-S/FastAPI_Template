@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const ContractPreview: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>('basic'); // Track which tab is active
+  const [activeTab, setActiveTab] = useState<string>('preview'); // Track which tab is active
   const [contractName, setContractName] = useState<string>('');
   const [contractSymbol, setContractSymbol] = useState<string>('');
 
@@ -11,12 +11,7 @@ const ContractPreview: React.FC = () => {
 
       {/* Tab Navigation */}
       <div className="flex space-x-4 mb-6">
-        <button
-          className={`px-4 py-2 rounded-t-lg ${activeTab === 'basic' ? 'bg-blue-500 text-white' : 'bg-gray-200'} transition-all duration-200`}
-          onClick={() => setActiveTab('basic')}
-        >
-          Basic Setup
-        </button>
+       
         <button
           className={`px-4 py-2 rounded-t-lg ${activeTab === 'code' ? 'bg-blue-500 text-white' : 'bg-gray-200'} transition-all duration-200`}
           onClick={() => setActiveTab('code')}
@@ -34,42 +29,7 @@ const ContractPreview: React.FC = () => {
       {/* Content Box */}
       <div className="w-full max-w-2xl bg-white shadow-lg rounded-lg p-6">
         {/* Basic Setup */}
-        {activeTab === 'basic' && (
-          <div>
-            <h2 className="text-2xl font-bold mb-4">Basic Setup</h2>
-            <div className="space-y-4">
-              <div>
-                <label htmlFor="contractName" className="block font-medium">
-                  Contract Name
-                </label>
-                <input
-                  type="text"
-                  id="contractName"
-                  value={contractName}
-                  onChange={(e) => setContractName(e.target.value)}
-                  className="w-full p-2 mt-1 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Enter Contract Name"
-                  required
-                />
-              </div>
-
-              <div>
-                <label htmlFor="contractSymbol" className="block font-medium">
-                  Symbol
-                </label>
-                <input
-                  type="text"
-                  id="contractSymbol"
-                  value={contractSymbol}
-                  onChange={(e) => setContractSymbol(e.target.value)}
-                  className="w-full p-2 mt-1 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Enter Contract Symbol"
-                  required
-                />
-              </div>
-            </div>
-          </div>
-        )}
+        
 
         {/* Code Tab */}
         {activeTab === 'code' && (

@@ -1,9 +1,12 @@
 import { useSDK } from "@metamask/sdk-react";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Home: React.FC = () => {
   const [account, setAccount] = useState<string>();
+  const [total, setTotal ] = useState(0);
+  const [active, setactive] = useState(0)
   const { sdk, connected, connecting, provider, chainId } = useSDK();
   const navigate = useNavigate()
 
@@ -21,6 +24,15 @@ const Home: React.FC = () => {
       console.warn("failed to connect..", err);
     }
   };
+
+  axios.post("http://127.0.0.1:8000",account).then((response:any) => {
+    console.log(response.data); // Posts by user with ID 1
+  })
+  .catch((error: any) => {
+    console.error('Error fetching data:', error);
+  });
+    
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
