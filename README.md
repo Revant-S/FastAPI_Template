@@ -97,35 +97,35 @@ The server will start on port 8000, and you can access it at http://localhost:80
    ```bash
     truffle init
    ```
-4.**Create Your Solidity Contract**
+4. **Create Your Solidity Contract**
    ```bash
     touch contracts/MyContract.sol
    ```
-5.**Create a Migration Script**
+5. **Create a Migration Script**
    ```bash
    touch migrations/2_deploy_contracts.js
    ```
-6.**Compile Your Contracts**
+6. **Compile Your Contracts**
    ```bash
     truffle compile
    ```
-7.**Set Up Ganache**
+7. **Set Up Ganache**
 If you want to test locally, install Ganache:
    ```bash
     npm install -g ganache-cli
    ```
 Then run Ganache:
- ```bash
+   ```bash
     ganache-cli
    ```
-8.**Migrate Your Contracts to the Development Network**
+8. **Migrate Your Contracts to the Development Network**
    ```bash
    truffle migrate --network development 
    ```
-9.**Interact with Your Deployed Contracte**
-You can open the Truffle console to interact with your deployed contract:
+9. **Interact with Your Deployed Contracte**
+   You can open the Truffle console to interact with your deployed contract:
    ```bash
-truffle console
+    truffle console
    ```
 
    
