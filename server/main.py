@@ -2,6 +2,8 @@ from fastapi import FastAPI # type: ignore
 from routes import auth
 from database.mongodb import MongoDB
 import uvicorn # type: ignore
+import routes.auth as authRouter
+import routes.contractRoutes as contractRoutes
 app = FastAPI()
 
 
@@ -19,8 +21,8 @@ async def shutdown_event():
 def test() :
     return "Working"
 
-app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
-
+app.include_router(authRouter.router, prefix="/api/auth", tags=["auth"])
+app.include_router(contractRoutes.router, prefix = "/api/contracts", tags = ["contracts"])
 
 
 if __name__ == "__main__":

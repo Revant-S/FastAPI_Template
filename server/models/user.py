@@ -1,38 +1,48 @@
-from pydantic import BaseModel, EmailStr, Field
-from typing import Optional
-from bson import ObjectId
+from datetime import datetime
+from typing import Optional, List
+from pydantic import BaseModel, Field, EmailStr
+from models.contracts import ContractResponse
 
-class PyObjectId(ObjectId):
-    @classmethod
-    def __get_validators__(cls):
-        yield cls.validate
+class ConnectRequest(BaseModel):
+    eth_address: str
 
-    @classmethod
-    def validate(cls, v):
-        if not ObjectId.is_valid(v):
-            raise ValueError("Invalid ObjectId")
-        return ObjectId(v)
+class UserBase(BaseModel):
+    eth_address: str = Field(..., description="Ethereum address of the user")
+    total_contracts: int = Field(default=0, description="Total number of contracts")
+    total_deployed_contracts: int = Field(default=0, description="Total deployed contracts")
+    is_active: bool = Field(default=True)
+    role: str = Field(default="user")
 
-class UserCreate(BaseModel):
-    email: EmailStr
-    username: str = Field(..., min_length=3, max_length=50)
-    password: str = Field(..., min_length=6)
+class UserCreate(UserBase):
+    """Schema for creating a new user"""
+    password: Optional[str] = Field(None, description="Optional password for traditional auth")
 
 class UserLogin(BaseModel):
+    """Schema for user login"""
     email: EmailStr
     password: str
 
-class UserDB(BaseModel):
-    id: Optional[PyObjectId] = Field(alias="_id")
-    email: EmailStr
-    username: str
-    password: str
+class UserUpdate(BaseModel):
+    """Schema for updating user information"""
+    username: Optional[str] = None
+    email: Optional[EmailStr] = None
+    total_contracts: Optional[int] = None
+    total_deployed_contracts: Optional[int] = None
+    is_active: Optional[bool] = None
 
-    class Config:
-        allow_population_by_field_name = True
-        arbitrary_types_allowed = True
-        json_encoders = {ObjectId: str}
+class UserInfo(UserBase):
+    created_at: datetime
+    updated_at: datetime
+    total_value_locked: float = 0.0
+    contract_count: int = 0
 
 class UserResponse(BaseModel):
-    email: EmailStr
-    username: str
+    """Schema for User Response"""
+    user: UserInfo
+    contracts: List[ContractResponse]
+
+    class Config:
+        arbitrary_types_allowed = True
+        json_encoders = {
+            datetime: lambda dt: dt.isoformat()
+        }

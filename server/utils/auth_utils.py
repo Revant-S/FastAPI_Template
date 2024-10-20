@@ -42,3 +42,4 @@ def decode_jwt_token(token: str) -> Dict:
         return payload
     except JWTError:
         raise HTTPException(status_code=401, detail="Could not validate credentials")
+    
