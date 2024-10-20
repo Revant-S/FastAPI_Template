@@ -8,10 +8,9 @@ router = APIRouter()
 
 @router.post("/", response_model=ContractResponse)
 async def create_contract(
-    contract_data: ContractCreate,
-    token_data: dict = Depends(verify_token)
+    contract_data: ContractCreate
 ):
-    return await ContractController.create_contract(contract_data, token_data["user_id"])
+    return await ContractController.create_contract(contract_data)
 
 @router.get("/{contract_id}", response_model=ContractResponse)
 async def get_contract(contract_id: str):
