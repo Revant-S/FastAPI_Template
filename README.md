@@ -56,11 +56,11 @@ This README provides step-by-step instructions for setting up both the client an
      python3 -m venv myenv
    ```
 3. **Activate the Virtual Environment**
-      - [For Linux/Mac]
+      - For Linux/Mac
          ```bash
          source ./myenv/bin/activate
          ```
-      - [For Windows]
+      - For Windows
         ```bash
          .\myenv\Scripts\activate
          ```
@@ -75,8 +75,8 @@ This README provides step-by-step instructions for setting up both the client an
    ```
 The server will start on port 8000, and you can access it at http://localhost:8000.
 
-##BlockChain 
-   #MetaMask Integration
+## BlockChain 
+   # MetaMask Integration
       Ensure you have MetaMask installed in your browser and connected to the Etherlink network. When deploying contracts, MetaMask will prompt you to confirm transactions.
       
 1. **Install Truffle Globally [For compilation of Solidity Code]**
