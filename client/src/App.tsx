@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard';
 import CreateContract from './pages/CreateContract';
 import ContractPreview from './pages/ContractPreview';
 import {Wallet} from './pages/Wallet'
+import ContractConfig from './pages/ContractConfig';
 
 
 
@@ -23,6 +24,8 @@ function App() {
           <Route path='/create-contract' element={<CreateContract />} />
           <Route path='/contract-preview' element={<ContractPreview />} />
           <Route path='/wallet' element={<Wallet />} />
+          <Route path='/contract-config' element={<ContractConfig />} />
+
 
 
 
