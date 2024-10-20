@@ -4,24 +4,28 @@ from fastapi import HTTPException
 from typing import List, Optional
 from models.contracts import ContractCreate, ContractResponse
 from database.mongodb import MongoDB
-
+from llm.contractgen_llm import generate_solidity
 class ContractController:
     @staticmethod
-    async def create_contract(contract_data: ContractCreate) -> ContractResponse:
+    async def create_contract(contract_data: ContractCreate, dropDown : dict, feature : dict) -> ContractResponse:
         contract = {
             **contract_data.dict(),
             "timestamp": datetime.utcnow(),
             "status": "PENDING"
         }
-        
+        print (contract_data)
+        try : 
+            response = await  generate_solidity(contract_data.description,dropDown,feature )
+        except: 
+            raise HTTPException(status_code=400, detail="Error generating contract")
         result = await MongoDB.contract_collection.insert_one(contract)
         
         if result.inserted_id:
             contract_doc = await MongoDB.contract_collection.find_one({"_id": result.inserted_id})
             print(contract_data)
             return ContractResponse(
-                code="this is the code",
-                preview="this is the preview",
+                code=response.Code,
+                preview=response.Preview,
                 gas_price=155,
                 contractId = result.inserted_id 
 )

@@ -17,6 +17,10 @@ class ContractCreate(BaseModel):
     class Config:
         orm_mode = True
 
+
+class Remaining(BaseModel):
+    dropDown : dict
+    feature : dict
 class ContractResponse(BaseModel):
     code : str
     preview : str

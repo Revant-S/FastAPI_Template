@@ -1,16 +1,17 @@
 from fastapi import APIRouter, Depends
 from typing import List, Optional
 from controllers.contractController import ContractController
-from models.contracts import ContractCreate, ContractResponse
+from models.contracts import ContractCreate, ContractResponse, Remaining
 from middleware.auth_middleware import verify_token
 
 router = APIRouter()
 
 @router.post("/", response_model=ContractResponse)
 async def create_contract(
-    contract_data: ContractCreate
+    contract_data: ContractCreate,
+    remaning : Remaining
 ):
-    return await ContractController.create_contract(contract_data)
+    return await ContractController.create_contract(contract_data, remaning.dropDown , remaning.feature)
 
 @router.get("/{contract_id}", response_model=ContractResponse)
 async def get_contract(contract_id: str):
