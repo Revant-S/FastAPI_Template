@@ -1,7 +1,8 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, Dict
 from datetime import datetime
 from enum import Enum
+from bson import ObjectId
 
 class ObjectStatus(str, Enum):
     PENDING = 'PENDING'
@@ -14,15 +15,20 @@ class ContractCreate(BaseModel):
     symbol: Optional[str] = None
     object_id: Optional[str] = None
     object_status: ObjectStatus = ObjectStatus.PENDING  # Set default using enum
+    
     class Config:
         orm_mode = True
 
-
 class Remaining(BaseModel):
-    dropDown : dict
-    feature : dict
+    dropDown: Dict
+    feature: Dict
+
 class ContractResponse(BaseModel):
-    code : str
-    preview : str
+    code: str
+    preview: str
     gas_price: Optional[float] = None
-    contractId : str
+    contractId: str  # Changed from ObjectId to str
+
+    @classmethod
+    def from_object_id(cls, contract_id: ObjectId):
+        return cls(contractId=str(contract_id), code="", preview="", gas_price=None)
