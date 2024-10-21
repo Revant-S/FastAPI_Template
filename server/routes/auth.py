@@ -20,7 +20,6 @@ async def connect_user(connect_request: ConnectRequest):
             "user" : user,
             "contracts" : []
         }
-    # await AuthController.update_user_contract_counts(user["eth_address"])
     contracts = await ContractController.get_user_contracts(user['eth_address'])
     
     return {

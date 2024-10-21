@@ -5,3 +5,6 @@ pymongo
 pydantic[email]
 python-jose[cryptography]  # For JWT tokens
 passlib[bcrypt]  # For password hashing
+transformers
+genai
+tensorflow
